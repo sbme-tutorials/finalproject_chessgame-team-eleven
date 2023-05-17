@@ -1,0 +1,13 @@
+Mohamed,500
+ayat,400
+enjy,310
+rashed,300
+02,200
+beth,110
+,100
+sfvhskjfhnsk,100
+AYAT,100
+Enjy,100
+01,0
+Beth,0
+ENJY,0
