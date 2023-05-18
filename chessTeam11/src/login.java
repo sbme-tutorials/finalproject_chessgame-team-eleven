@@ -26,6 +26,7 @@ public class login implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setSize(700,550);
+        frame.setLocationRelativeTo((Component) null);
         frame.setVisible(true);
         ImageIcon icon = new ImageIcon("logo.png");
         frame.setIconImage(icon.getImage());

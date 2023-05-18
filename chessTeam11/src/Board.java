@@ -4,7 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Board extends JPanel{
-    static ArrayList<Pieces> pieceList = new ArrayList<>();
+  static   int checkcounter=0;
+   static ArrayList<Pieces> pieceList = new ArrayList<>();
     static int moveCounter = 1;
     int column = 8;
     int row = 8;
@@ -37,7 +38,7 @@ public class Board extends JPanel{
         checkScanner=new KingCheck(this);
         if (sameColor(move.selectedPiece, move.killedPieces)) {
             return false;
-        }
+            }
         if (!(move.selectedPiece.isValidMovement(move.newColumn, move.newRow))) {
             return false;
         }
@@ -46,7 +47,7 @@ public class Board extends JPanel{
         }
         if(checkScanner.isKingChecked(move)){
             return false;
-        }
+        }//else System.out.println("the king is safe");
         if(move.newColumn < 0 || move.newColumn > 8 || move.newRow < 0 || move.newRow > 7){
             return false;
         }
@@ -93,111 +94,114 @@ public class Board extends JPanel{
 
         if(moveCounter % 2 != 0){
             moveCounter++;
+            System.out.println("white plays");
         }else {
             moveCounter++;
+            System.out.println("black plays");
         }
 
         if ((selectedPiece.isWhite &&  move.newRow == 0) || (!selectedPiece.isWhite && move.newRow == 7)) {
             if (selectedPiece.pieceName == "pawn") {
                 move.promotedPawn = selectedPiece;
-                promotionWindow promotionWindow = new promotionWindow(this, move);
+                System.out.println("pawn is Promoted");
+               promotionWindow promotionWindow = new promotionWindow(this, move);
             }
         }
         kill(move);
-    }
+        }
 
-    //method to remove the killed pieces from the chess board and add it to their corresponding panels
+      //method to remove the killed pieces from the chess board and add it to their corresponding panels
     public void kill(Move move){
 
         if (move.killedPieces != null) {
             if (move.killedPieces.isWhite) {
-                System.out.println(move.killedPieces.pieceName);
-                switch(move.killedPieces.pieceName){
-                    case "knight" : {
-                        ImageIcon whiteKnight = new ImageIcon("White Knight.png");
-                        Image img = whiteKnight.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);;
-                        JLabel WhiteKnight = new JLabel(new ImageIcon(img));
-                        GameFrame.whiteKilledLabel.add(WhiteKnight);
-                        GameFrame.frame.setVisible(true);
-                        break;
-                    }
-                    case "queen" : {
-                        ImageIcon whiteQueen = new ImageIcon("White Queen.png");
-                        Image img = whiteQueen.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-                        JLabel WhiteQueen = new JLabel(new ImageIcon(img));
-                        GameFrame.whiteKilledLabel.add(WhiteQueen);
-                        GameFrame.frame.setVisible(true);
-                        break;
-                    }
-                    case  "rook" : {
-                        ImageIcon whiteRook = new ImageIcon("White Rook.png");
-                        Image img = whiteRook.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-                        JLabel WhiteRook = new JLabel(new ImageIcon(img));
-                        GameFrame.whiteKilledLabel.add(WhiteRook);
-                        GameFrame.frame.setVisible(true);
-                        break;
-                    }
-                    case "pawn": {
-                        ImageIcon whitePawn = new ImageIcon("White Pawn.png");
-                        Image img = whitePawn.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-                        JLabel WhitePawn = new JLabel(new ImageIcon(img));
-                        GameFrame.whiteKilledLabel.add(WhitePawn);
-                        GameFrame.frame.setVisible(true);
-                        break;
-                    }
-                    case "bishop" : {
-                        ImageIcon whiteBishop = new ImageIcon("White Bishop.png");
-                        Image img = whiteBishop.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-                        JLabel WhiteBishop = new JLabel(new ImageIcon(img));
-                        GameFrame.whiteKilledLabel.add(WhiteBishop);
-                        GameFrame.frame.setVisible(true);
-                        break;
-                    }
+               System.out.println(move.killedPieces.pieceName);
+                    switch(move.killedPieces.pieceName){
+                        case "knight" : {
+                    ImageIcon whiteKnight = new ImageIcon("White Knight.png");
+                    Image img = whiteKnight.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);;
+                    JLabel WhiteKnight = new JLabel(new ImageIcon(img));
+                    GameFrame.whiteKilledLabel.add(WhiteKnight);
+                    GameFrame.frame.setVisible(true);
+                    break;
+                }
+                        case "queen" : {
+                    ImageIcon whiteQueen = new ImageIcon("White Queen.png");
+                    Image img = whiteQueen.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+                    JLabel WhiteQueen = new JLabel(new ImageIcon(img));
+                    GameFrame.whiteKilledLabel.add(WhiteQueen);
+                    GameFrame.frame.setVisible(true);
+                            break;
+                }
+                        case  "rook" : {
+                    ImageIcon whiteRook = new ImageIcon("White Rook.png");
+                    Image img = whiteRook.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+                    JLabel WhiteRook = new JLabel(new ImageIcon(img));
+                    GameFrame.whiteKilledLabel.add(WhiteRook);
+                    GameFrame.frame.setVisible(true);
+                    break;
+                }
+                        case "pawn": {
+                  ImageIcon whitePawn = new ImageIcon("White Pawn.png");
+                  Image img = whitePawn.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+                  JLabel WhitePawn = new JLabel(new ImageIcon(img));
+                  GameFrame.whiteKilledLabel.add(WhitePawn);
+                  GameFrame.frame.setVisible(true);
+                  break;
+                }
+                        case "bishop" : {
+                    ImageIcon whiteBishop = new ImageIcon("White Bishop.png");
+                    Image img = whiteBishop.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+                    JLabel WhiteBishop = new JLabel(new ImageIcon(img));
+                    GameFrame.whiteKilledLabel.add(WhiteBishop);
+                    GameFrame.frame.setVisible(true);
+                    break;
+                }
 
-                }} else {
+            }} else {
                 System.out.println(move.killedPieces.pieceName);
                 switch ( move.killedPieces.pieceName ) {
                     case "knight" : {
-                        ImageIcon blackKnight = new ImageIcon("Black Knight.png");
-                        Image img = blackKnight.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);;
-                        JLabel BlackKnight = new JLabel(new ImageIcon(img));
-                        GameFrame.blackKilledLabel.add(BlackKnight);
-                        GameFrame.frame.setVisible(true);
-                        break;
-                    }
+                    ImageIcon blackKnight = new ImageIcon("Black Knight.png");
+                    Image img = blackKnight.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);;
+                    JLabel BlackKnight = new JLabel(new ImageIcon(img));
+                    GameFrame.blackKilledLabel.add(BlackKnight);
+                    GameFrame.frame.setVisible(true);
+                    break;
+                }
                     case "queen" : {
-                        ImageIcon blackQueen = new ImageIcon("Black Queen.png");
-                        Image img = blackQueen.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);;
-                        JLabel BlackQueen = new JLabel(new ImageIcon(img));
-                        GameFrame.blackKilledLabel.add(BlackQueen);
-                        GameFrame.frame.setVisible(true);
-                        break;
-                    }
+                    ImageIcon blackQueen = new ImageIcon("Black Queen.png");
+                    Image img = blackQueen.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);;
+                    JLabel BlackQueen = new JLabel(new ImageIcon(img));
+                    GameFrame.blackKilledLabel.add(BlackQueen);
+                    GameFrame.frame.setVisible(true);
+                    break;
+                }
                     case "rook" : {
-                        ImageIcon blackRook = new ImageIcon("Black Rook.png");
-                        Image img = blackRook.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);;
-                        JLabel BlackRook = new JLabel(new ImageIcon(img));
-                        GameFrame.blackKilledLabel.add(BlackRook);
-                        GameFrame.frame.setVisible(true);
-                        break;
-                    }
+                    ImageIcon blackRook = new ImageIcon("Black Rook.png");
+                    Image img = blackRook.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);;
+                    JLabel BlackRook = new JLabel(new ImageIcon(img));
+                    GameFrame.blackKilledLabel.add(BlackRook);
+                    GameFrame.frame.setVisible(true);
+                    break;
+                }
                     case "pawn" : {
-                        ImageIcon blackPawn = new ImageIcon("Black Pawn.png");
-                        Image img = blackPawn.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-                        JLabel BlackPawn = new JLabel(new ImageIcon(img));
-                        GameFrame.blackKilledLabel.add(BlackPawn);
-                        GameFrame.frame.setVisible(true);
-                        break;
-                    }
+                    ImageIcon blackPawn = new ImageIcon("Black Pawn.png");
+                    Image img = blackPawn.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+                    JLabel BlackPawn = new JLabel(new ImageIcon(img));
+                    GameFrame.blackKilledLabel.add(BlackPawn);
+                    GameFrame.frame.setVisible(true);
+                    break;
+                }
                     case "bishop" : {
-                        ImageIcon blackBishop = new ImageIcon("Black Bishop.png");
-                        Image img = blackBishop.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-                        JLabel BlackBishop = new JLabel(new ImageIcon(img));
-                        GameFrame.blackKilledLabel.add(BlackBishop);
-                        GameFrame.frame.setVisible(true);
-                        break;
-                    }
-                }}}
+                    ImageIcon blackBishop = new ImageIcon("Black Bishop.png");
+                    Image img = blackBishop.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+                    JLabel BlackBishop = new JLabel(new ImageIcon(img));
+                    GameFrame.blackKilledLabel.add(BlackBishop);
+                    GameFrame.frame.setVisible(true);
+                    break;
+                }
+            }}}
         pieceList.remove(move.killedPieces);
 
     }
@@ -214,10 +218,6 @@ public class Board extends JPanel{
 
     //method to add the pieces on the chess board
     public void addPieces(){
-        pieceList.add(new King(this,4,7,true));
-        pieceList.add(new King(this,4,0,false));
-
-
         pieceList.add(new Queen(this,3,0,false));
         pieceList.add(new Queen(this,3,7,true));
 
@@ -253,6 +253,9 @@ public class Board extends JPanel{
         pieceList.add(new Pawn(this,6,6,true));
         pieceList.add(new Pawn(this,7,6,true));
 
+        pieceList.add(new King(this,4,7,true));
+        pieceList.add(new King(this,4,0,false));
+
     }
 
     Pieces findKing(boolean isWhite){
@@ -275,50 +278,74 @@ public class Board extends JPanel{
         Move move = new Move(this, king, kingCol, kingRow);
         return kingCheck.isKingChecked(move);
     }
+     public boolean canBlockCheck(){
 
-    //method to paint the board and the pieces
-    public void paintComponent(Graphics g){
-        Graphics2D g2d=(Graphics2D) g;
+        for(Pieces piece : pieceList){
+          for (int c = 0; c < row+1; c++) {
+              for (int r = 0; r < column + 1; r++) {
+                  Move move =new Move(this, piece, piece.column, piece.row);
+                  if (isValidMove(new Move(this, piece, c, r))) {
+                     System.out.println(piece);
+                      checkcounter++;
+                     System.out.println(checkcounter);
+                      if (checkcounter != 0) {
+                          return true;}
 
-        for (int row = 0; row < 8; row++) {
-            for (int col = 0; col <8 ; col++) {
-                g2d.setColor((row+col)%2==0 ? new Color(255, 252, 252) : new Color(149, 149, 175));
-                g2d.fillRect(row*spotSize,col*spotSize,spotSize,spotSize);
-            }
-            if (selectedPiece!=null) {
-                for (int c = 0; c < row+1; c++) {
-                    for (int r = 0; r < column+1; r++) {
-                        if (isValidMove(new Move(this, selectedPiece, c, r))) {
-                            g2d.setColor(new Color(108, 227, 150, 255));
-                            g2d.fillRect(c * spotSize, r * spotSize, spotSize, spotSize-1);
-                        }
-                        if (isValidMove(new Move(this, selectedPiece, c, r))&&this.getPiece( c, r)!=null){
-                            g2d.setColor(new Color(71, 211, 111, 255));
-                            g2d.fillRect(c * spotSize, r * spotSize, spotSize, spotSize-1);
-                        }
-                        if (isValidMove1(new Move(this, selectedPiece, c, r))&&this.getPiece( c, r)!=null&&selectedPiece.isWhite==getPiece(c,r).isWhite&&!(selectedPiece.row==r&&selectedPiece.column==c)) {
-                            g2d.setColor(new Color(248, 97, 97, 179));
-                            g2d.fillRect(c * spotSize, r * spotSize, spotSize, spotSize-1);
+                  }
 
-                        }
-                        if (selectedPiece.row==r&&selectedPiece.column==c) {
-                            g2d.setColor(new Color(250, 237, 235, 179));
-                            g2d.fillRect(c * spotSize, r * spotSize, spotSize, spotSize);
-                        }
-                        if (this.getPiece(c,r)==this.findKing(selectedPiece.isWhite)&&this.isKingInCheck(getPiece(c,r).isWhite)) {
-                            g2d.setColor(new Color(224, 78, 78,179));
-                            g2d.fillOval(c * spotSize, r * spotSize, spotSize, spotSize);
-                        }
+}}}
 
-                    }
 
-                }
-            }
-        }
-
-        for(Pieces piece : pieceList ){
-            piece.paint(g2d);
-        }
+          return false;
     }
 
-}
+              //method to paint the board and the pieces
+              public void paintComponent (Graphics g){
+                  Graphics2D g2d = (Graphics2D) g;
+
+                  for (int row = 0; row < 8; row++) {
+                      for (int col = 0; col < 8; col++) {
+                          g2d.setColor((row + col) % 2 == 0 ? new Color(255, 252, 252) : new Color(149, 149, 175));
+                          g2d.fillRect(row * spotSize, col * spotSize, spotSize, spotSize);
+                      }
+                      if (selectedPiece != null) {
+                          checkcounter = 0;
+                          for (int c = 0; c < row + 1; c++) {
+                              for (int r = 0; r < column + 1; r++) {
+                                  if (isValidMove(new Move(this, selectedPiece, c, r))) {
+                                      checkcounter++;
+                                      System.out.println(checkcounter);
+                                      g2d.setColor(new Color(108, 227, 150, 255));
+                                      g2d.fillRect(c * spotSize, r * spotSize, spotSize, spotSize - 1);
+                                  }
+                                  if (isValidMove(new Move(this, selectedPiece, c, r)) && this.getPiece(c, r) != null) {
+                                     // checkcounter++;
+                                      //System.out.println(checkcounter);
+                                      g2d.setColor(new Color(71, 211, 111, 255));
+                                      g2d.fillRect(c * spotSize, r * spotSize, spotSize, spotSize - 1);
+                                  }
+                                  if (isValidMove1(new Move(this, selectedPiece, c, r)) && this.getPiece(c, r) != null && selectedPiece.isWhite == getPiece(c, r).isWhite && !(selectedPiece.row == r && selectedPiece.column == c)) {
+                                      g2d.setColor(new Color(248, 97, 97, 179));
+                                      g2d.fillRect(c * spotSize, r * spotSize, spotSize, spotSize - 1);
+
+                                  }
+                                  if (selectedPiece.row == r && selectedPiece.column == c) {
+                                      g2d.setColor(new Color(250, 237, 235, 179));
+                                      g2d.fillRect(c * spotSize, r * spotSize, spotSize, spotSize);
+                                  }
+                                  if (this.getPiece(c, r) == this.findKing(selectedPiece.isWhite) && this.isKingInCheck(getPiece(c, r).isWhite)) {
+                                      g2d.setColor(new Color(224, 78, 78, 179));
+                                      g2d.fillOval(c * spotSize, r * spotSize, spotSize, spotSize);
+                                  }
+
+                              }
+
+                          }
+                      }
+                  }
+
+                  for (Pieces piece : pieceList) {
+                      piece.paint(g2d);
+                  }
+              }}
+

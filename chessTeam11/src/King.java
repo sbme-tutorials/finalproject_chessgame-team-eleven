@@ -45,95 +45,35 @@ public class King extends Pieces {
         }
         return false;
 }
-  public boolean hasEscapeMoves() {
+ public boolean hasEscapeMoves() {
        Pieces King = board.findKing(board.selectedPiece.isWhite);
-   //  boolean canKingEscape = false;
-      boolean canPiecesBlockCheck = false;
-
-      // if (Board.moveCounter % 2 != 0) {
+       boolean canPiecesBlockCheck = false;
       for (Pieces piece : Board.pieceList) {
-         // System.out.println(piece);
           if (piece.isWhite == board.selectedPiece.isWhite) {
-              for (int column = 0 ; column < 7 ; column++) {
-                  for (int row = 0 ; row < 7 ; row++) {
-                    Move move = new Move(board, piece, column, row);
-                      if(board.getPiece(column,row)!= null && board.getPiece(column,row).pieceName=="king")
-                          continue;
+              for ( int column = 0 ; column < 7 ; column++) {
+                  for ( int row = 0 ; row < 7 ; row++) {
+                Move move = new Move(board, piece, column, row);
                       if (piece.isValidMove(move)){
-                          //System.out.println(piece);
-                          //System.out.println("column" + column);
-                          //System.out.println("row" + row);
-                          canPiecesBlockCheck = true;
+                          System.out.println(column);
+                          System.out.println(column);
+                          if(checkScanner.isKingChecked(new Move(board, board.selectedPiece,move.newColumn,move.newRow))){
+                              canPiecesBlockCheck=false;
+                          }else {
+                              canPiecesBlockCheck = true;
                           break;
+                          }
+
                       }
-                  }if (canPiecesBlockCheck)
+}if (canPiecesBlockCheck)
                       break;
           }
       }if (canPiecesBlockCheck)
               break;
     }
-
       if (canPiecesBlockCheck) {
           return true;
       } else return false;
     }}
-          /*for(int column= 0 ;column<=8;column++){
-             for(int row = 0 ;row <=8 ; row++){
-                 if (wking.isValidMove(new Move(board,wking,column,row))) {
-                     canKingEscape=true;
-                     break;
-                 }
-             }if(canKingEscape)
-                 break;
-         }*/
-
-      //}
-    /* if (Board.moveCounter % 2 == 0) {
-              for (Pieces piece : Board.pieceList) {
-                  if (piece.isWhite == false) {
-                      for(int column= 0 ;column<=8;column++){
-                          for(int row = 0 ;row <=8 ; row++){
-                              if (piece.isValidMove(new Move(board,piece,column,row))) {
-                                  canPiecesBlockCheck=true;
-                                  break;
-                              }
-                          }if(canPiecesBlockCheck)
-                              break;
-
-                      }
-                  }
-              }/*for(int column= 0 ;column<=8;column++){
-             for(int row = 0 ;row <=8 ; row++){
-                 if (bking.isValidMove(new Move(board,bking,column,row))) {
-                     canKingEscape=true;
-                     break;
-                 }
-             }if(canKingEscape)
-                 break;
-         }
-
-     }*/
-
-
-
-
-       /* if((!(board.checkScanner.isKingChecked(new Move(board, this, this.column, this.row + 1) ) &&
-              board.checkScanner.isKingChecked(new Move(board, this, this.column, this.row - 1)) &&
-              board.checkScanner.isKingChecked(new Move(board, this, this.column + 1, this.row)) &&
-              board.checkScanner.isKingChecked(new Move(board, this, this.column - 1, this.row)) &&
-              board.checkScanner.isKingChecked(new Move(board, this, this.column - 1, this.row - 1)) &&
-              board.checkScanner.isKingChecked(new Move(board, this, this.column + 1, this.row + 1)) &&
-              board.checkScanner.isKingChecked(new Move(board, this, this.column - 1, this.row + 1)) &&
-              board.checkScanner.isKingChecked(new Move(board, this, this.column + 1, this.row - 1))))){
-              canKingEscape=true;
-       // return true;
-      }*/
-        /*  if (canKingEscape|| canPiecesBlockCheck){
-              return true;
-          }else return false;*/
-
-      //  return false;
-
 
 
 

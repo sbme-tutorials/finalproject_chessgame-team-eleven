@@ -18,6 +18,7 @@ public class FirstPage extends JFrame implements ActionListener {
         this.setSize(700, 587);
         this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo((Component) null);
         this.setTitle("Chess Game");
         this.setResizable(false);
         this.setIconImage(gameicon.getImage());
