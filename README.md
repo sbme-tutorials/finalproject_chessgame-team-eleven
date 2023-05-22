@@ -1,6 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/s-rx3t9_)
 # Chess Master - Play Like a Pro 
-<img src ="https://github.com/enjyashraf18/sheet1.solutions__/assets/110485583/a5c18f00-49ad-489d-9fd2-dad47caedd1b" width = "700" >
+![Screenshot_2023-05-13_013108-removebg-preview](https://github.com/sbme-tutorials/finalproject_chessgame-team-eleven/assets/110485583/a8df57a9-2564-4ae4-9bf4-87b74c681f22)
 
 ## A Java Implementation of the World's Most Popular Game  
  
@@ -32,19 +32,18 @@
 * Pawn promotion
 
 ## Login / sign up
-<div> 
-<img src = "https://github.com/enjyashraf18/sheet1.solutions__/assets/110485583/4539962a-52ae-462e-bb07-cbe94915caaa" width = "500">
-<img src = "https://github.com/enjyashraf18/sheet1.solutions__/assets/110485583/e5cc3974-5c5b-404e-856d-0924b02f52de" width = "500">
-</div>
+![Screenshot 2023-05-14 005534](https://github.com/sbme-tutorials/finalproject_chessgame-team-eleven/assets/110485583/b3e6f316-52b7-4eab-9b8a-29fd29d28429)
+![Screenshot 2023-05-14 005634](https://github.com/sbme-tutorials/finalproject_chessgame-team-eleven/assets/110485583/cb08ab32-a779-48f5-a479-f1a62cc5b340)
+
 
 ## Ready to rule the board? First move is yours!
-![movements](https://github.com/enjyashraf18/sheet1.solutions__/assets/110485583/4381e02c-6d0c-46b1-9ae2-188096713f5b)
+![movements](https://github.com/sbme-tutorials/finalproject_chessgame-team-eleven/assets/110485583/aa228742-f648-4646-a801-57a6e8b5749e)
 
 ## Protect your kingdom, danger awaits!
-![checkmate](https://github.com/enjyashraf18/sheet1.solutions__/assets/110485583/03fcc303-5291-4396-8ee7-e7f56cc90edd)
+![checkmate](https://github.com/sbme-tutorials/finalproject_chessgame-team-eleven/assets/110485583/dbd40aa6-6cd1-4abb-bfce-09d4981abc7e)
 
 ## Checkmate! We have a winner.
-<img src = "https://github.com/enjyashraf18/sheet1.solutions__/assets/110485583/df4e3b51-a4fa-4bcd-8852-3a2da0fb295e" width = "950" >
+![Screenshot 2023-05-14 014557](https://github.com/sbme-tutorials/finalproject_chessgame-team-eleven/assets/110485583/e2602e6a-d04e-4e0b-8aa1-e214d4e1e604)
 
 
 ## Contribution
